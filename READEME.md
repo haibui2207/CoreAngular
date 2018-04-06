@@ -1,6 +1,6 @@
 # # ForgotPassword
 ##Step 1
->URL : https://localhost:12345/api/auth/forgotpassword
+URL : https://localhost:12345/api/auth/forgotpassword
 Method : POST
 BODY:
 {
@@ -9,7 +9,7 @@ BODY:
 RESPONSE : A Validate Code
 
 ##Step 2
->URL : https://localhost:12345/api/auth/resetpassword
+URL : https://localhost:12345/api/auth/resetpassword
 Method : POST
 BODY:
 {
@@ -19,7 +19,7 @@ BODY:
 	"Code" : "code-here"
 }
 
->##Step 3 : Check get token with new password
+##Step 3 : Check get token with new password
 URL : https://localhost:12345/api/auth
 Method : POST
 BODY:

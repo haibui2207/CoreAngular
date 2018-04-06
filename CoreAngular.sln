@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreAngular", "CoreAngular\CoreAngular.csproj", "{0D5342C9-0EBF-4EE9-994B-EBC03548B9AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj", "{5EC54264-C82D-40AC-A682-E413B4745FEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI", "WebUI\WebUI.csproj", "{C641A8BF-D87A-4F3B-8254-712DEFC21867}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{8926A70C-A4CE-4B28-95F6-153537EBB40D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +19,10 @@ Global
 		{0D5342C9-0EBF-4EE9-994B-EBC03548B9AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D5342C9-0EBF-4EE9-994B-EBC03548B9AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D5342C9-0EBF-4EE9-994B-EBC03548B9AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5EC54264-C82D-40AC-A682-E413B4745FEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5EC54264-C82D-40AC-A682-E413B4745FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5EC54264-C82D-40AC-A682-E413B4745FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5EC54264-C82D-40AC-A682-E413B4745FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C641A8BF-D87A-4F3B-8254-712DEFC21867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C641A8BF-D87A-4F3B-8254-712DEFC21867}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C641A8BF-D87A-4F3B-8254-712DEFC21867}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C641A8BF-D87A-4F3B-8254-712DEFC21867}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

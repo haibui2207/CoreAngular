@@ -35,15 +35,6 @@ namespace CoreAngular
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-            //add cors
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowCredentials());
-            });
 
             //added
             services.AddAuthentication(options =>
@@ -66,7 +57,15 @@ namespace CoreAngular
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
-
+            //////
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
             services.AddMvc();
         }
 
@@ -87,11 +86,7 @@ namespace CoreAngular
             app.UseStaticFiles();
 
             app.UseAuthentication();
-
-            //add cors
             app.UseCors("CorsPolicy");
-
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
