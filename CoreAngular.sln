@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreAngular", "CoreAngular\CoreAngular.csproj", "{0D5342C9-0EBF-4EE9-994B-EBC03548B9AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj", "{5EC54264-C82D-40AC-A682-E413B4745FEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D5342C9-0EBF-4EE9-994B-EBC03548B9AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D5342C9-0EBF-4EE9-994B-EBC03548B9AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D5342C9-0EBF-4EE9-994B-EBC03548B9AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D5342C9-0EBF-4EE9-994B-EBC03548B9AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EC54264-C82D-40AC-A682-E413B4745FEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EC54264-C82D-40AC-A682-E413B4745FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EC54264-C82D-40AC-A682-E413B4745FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EC54264-C82D-40AC-A682-E413B4745FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {334D49BC-0878-44B1-98E5-65C706160B62}
+	EndGlobalSection
+EndGlobal
