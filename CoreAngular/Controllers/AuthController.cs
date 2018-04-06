@@ -9,7 +9,6 @@ using CoreAngular.Models;
 using CoreAngular.Models.AccountViewModels;
 using CoreAngular.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,12 +16,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Cors;
 
 namespace CoreAngular.Controllers
 {
     [Produces("application/json")]
     [Route("api/Auth")]
-    [EnableCors("CorsPolicy")]
     public class AuthController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -164,6 +163,7 @@ namespace CoreAngular.Controllers
 
         [HttpPost]
         [Route("RegisterUser")]
+        [EnableCors("CorsPolicy")]
         public async Task<IActionResult> RegisterUser([FromBody] RegisterViewModel model)
         {
 

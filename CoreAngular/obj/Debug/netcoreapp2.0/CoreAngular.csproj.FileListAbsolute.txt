@@ -10,3 +10,15 @@ C:\Users\DELL\Desktop\CoreAngular\CoreAngular\bin\Debug\netcoreapp2.0\CoreAngula
 C:\Users\DELL\Desktop\CoreAngular\CoreAngular\bin\Debug\netcoreapp2.0\CoreAngular.pdb
 C:\Users\DELL\Desktop\CoreAngular\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.dll
 C:\Users\DELL\Desktop\CoreAngular\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.pdb
+D:\myGit\CoreAngular\CoreAngular\bin\Debug\netcoreapp2.0\CoreAngular.deps.json
+D:\myGit\CoreAngular\CoreAngular\bin\Debug\netcoreapp2.0\CoreAngular.runtimeconfig.json
+D:\myGit\CoreAngular\CoreAngular\bin\Debug\netcoreapp2.0\CoreAngular.runtimeconfig.dev.json
+D:\myGit\CoreAngular\CoreAngular\bin\Debug\netcoreapp2.0\CoreAngular.dll
+D:\myGit\CoreAngular\CoreAngular\bin\Debug\netcoreapp2.0\CoreAngular.pdb
+D:\myGit\CoreAngular\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.csprojResolveAssemblyReference.cache
+D:\myGit\CoreAngular\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.csproj.CoreCompileInputs.cache
+D:\myGit\CoreAngular\CoreAngular\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+D:\myGit\CoreAngular\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.AssemblyInfoInputs.cache
+D:\myGit\CoreAngular\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.AssemblyInfo.cs
+D:\myGit\CoreAngular\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.dll
+D:\myGit\CoreAngular\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.pdb

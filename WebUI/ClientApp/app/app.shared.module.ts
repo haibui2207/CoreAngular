@@ -9,9 +9,8 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
-import { ForgotPasswordComponent } from './components/forgotpassword/forgotpassword.component';
 
-import { DataserviceService } from './services/dataservice.service';
+import { RegisterUserComponent } from './components/registeruser/registeruser.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +19,7 @@ import { DataserviceService } from './services/dataservice.service';
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        ForgotPasswordComponent
+        RegisterUserComponent
     ],
     imports: [
         CommonModule,
@@ -31,12 +30,10 @@ import { DataserviceService } from './services/dataservice.service';
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
-            { path: 'forgot-password', component: ForgotPasswordComponent },
+            { path: 'register-user', component: RegisterUserComponent },
             { path: '**', redirectTo: 'home' }
         ])
-    ],
-    providers: [DataserviceService],
-    bootstrap: [AppComponent]
+    ]
 })
 export class AppModuleShared {
 }
