@@ -1,0 +1,13 @@
+Ahihi
+<div class="comments-list">
+    <div class="media" *ngFor="let user of model">
+        <a class="media-left" href="#">
+            <img [src]="user.avatarURL" style="width:  150px;height:150px">
+        </a>
+        <div class="media-body">
+
+            <h4 class="media-heading user_name">{{ user.userName }}</h4>
+            {{ user.email }}
+        </div>
+    </div>
+</div>

@@ -32,9 +32,30 @@
                         <span class='glyphicon glyphicon-th-list'></span> Forgot Password
                     </a>
                 </li>
-                <li [routerLinkActive]="['link-active']">
+               
+                <li [routerLinkActive]="['link-active']" *ngIf="!isLoggedIn">
                     <a [routerLink]="['/register-user']">
                         <span class='glyphicon glyphicon-th-list'></span> Register User
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']" *ngIf="!isLoggedIn">
+                    <a [routerLink]="['/login-form']">
+                        <span class='glyphicon glyphicon-th-list'></span> Login
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']" *ngIf="isLoggedIn$ | async">
+                    <a [routerLink]="['/user-profile']">
+                        <span class='glyphicon glyphicon-th-list'></span> User Proflie
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']" *ngIf="isLoggedIn$ | async">
+                    <a [routerLink]="['/list-agent']">
+                        <span class='glyphicon glyphicon-th-list'></span> List Agent
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']" *ngIf="isLoggedIn$ | async as isLoggedIn">
+                    <a *ngIf="isLoggedIn" (click)="onLogout()">
+                        <span class='glyphicon glyphicon-th-list'></span> Log Out
                     </a>
                 </li>
             </ul>

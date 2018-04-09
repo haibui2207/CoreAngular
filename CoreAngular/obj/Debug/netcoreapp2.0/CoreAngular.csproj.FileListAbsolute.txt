@@ -22,3 +22,15 @@ D:\MergeCode\MergeCode\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.AssemblyI
 D:\MergeCode\MergeCode\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.AssemblyInfo.cs
 D:\MergeCode\MergeCode\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.dll
 D:\MergeCode\MergeCode\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.pdb
+C:\Users\AnhThu\Desktop\AnhThinh\MergeCode\CoreAngular\bin\Debug\netcoreapp2.0\CoreAngular.deps.json
+C:\Users\AnhThu\Desktop\AnhThinh\MergeCode\CoreAngular\bin\Debug\netcoreapp2.0\CoreAngular.runtimeconfig.json
+C:\Users\AnhThu\Desktop\AnhThinh\MergeCode\CoreAngular\bin\Debug\netcoreapp2.0\CoreAngular.runtimeconfig.dev.json
+C:\Users\AnhThu\Desktop\AnhThinh\MergeCode\CoreAngular\bin\Debug\netcoreapp2.0\CoreAngular.dll
+C:\Users\AnhThu\Desktop\AnhThinh\MergeCode\CoreAngular\bin\Debug\netcoreapp2.0\CoreAngular.pdb
+C:\Users\AnhThu\Desktop\AnhThinh\MergeCode\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.csprojResolveAssemblyReference.cache
+C:\Users\AnhThu\Desktop\AnhThinh\MergeCode\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.csproj.CoreCompileInputs.cache
+C:\Users\AnhThu\Desktop\AnhThinh\MergeCode\CoreAngular\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\AnhThu\Desktop\AnhThinh\MergeCode\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.AssemblyInfoInputs.cache
+C:\Users\AnhThu\Desktop\AnhThinh\MergeCode\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.AssemblyInfo.cs
+C:\Users\AnhThu\Desktop\AnhThinh\MergeCode\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.dll
+C:\Users\AnhThu\Desktop\AnhThinh\MergeCode\CoreAngular\obj\Debug\netcoreapp2.0\CoreAngular.pdb
