@@ -12,6 +12,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { ForgotPasswordComponent } from './components/forgotpassword/forgotpassword.component';
 
 import { DataserviceService } from './services/dataservice.service';
+import { RegisterUserComponent } from './components/registeruser/registeruser.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { DataserviceService } from './services/dataservice.service';
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        ForgotPasswordComponent
+        ForgotPasswordComponent,
+        RegisterUserComponent
     ],
     imports: [
         CommonModule,
@@ -32,7 +34,9 @@ import { DataserviceService } from './services/dataservice.service';
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'forgot-password', component: ForgotPasswordComponent },
+            { path: 'register-user', component: RegisterUserComponent },
             { path: '**', redirectTo: 'home' }
+           
         ])
     ],
     providers: [DataserviceService],
