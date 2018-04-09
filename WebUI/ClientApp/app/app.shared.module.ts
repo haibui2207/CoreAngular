@@ -10,9 +10,11 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { ForgotPasswordComponent } from './components/forgotpassword/forgotpassword.component';
+import { RegisterUserComponent } from './components/registeruser/registeruser.component';
 
 import { DataserviceService } from './services/dataservice.service';
-import { RegisterUserComponent } from './components/registeruser/registeruser.component';
+import { RegisterService } from './services/register.service';
+
 
 @NgModule({
     declarations: [
@@ -39,7 +41,7 @@ import { RegisterUserComponent } from './components/registeruser/registeruser.co
            
         ])
     ],
-    providers: [DataserviceService],
+    providers: [DataserviceService, RegisterService],
     bootstrap: [AppComponent]
 })
 export class AppModuleShared {

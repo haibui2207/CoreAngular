@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { RegisterService } from '../../services/register.service';
 
 @Component({
     selector: 'registeruser',
@@ -9,19 +10,23 @@ import 'rxjs/add/operator/map';
 export class RegisterUserComponent {
     sMsg: any;
     constructor(private http: Http,
-        @Inject('BASE_URL') private baseUrl: string) {
+        @Inject('BASE_URL') private baseUrl: string, private myservice: RegisterService) {
     }
     onClickSubmit(dataform: any) {
-        this.http.post('https://localhost:44342/api/Auth/RegisterUser', dataform).subscribe(result => {
-            this.sMsg = result.json()
-        }, (error: Response) => {
-            this.sMsg = error.text();
-        });
-      
-        //this.http.post('https://localhost:44342/api/Auth/RegisterUser', dataform)
-        //    .map((res: Response) => {
-        //        this.sMsg = res;
-        //        console.log(this.sMsg);
-        //    });
+        //this.http.post('https://localhost:44342/api/Auth/RegisterUser', dataform).subscribe(result => {
+        //    this.sMsg = result.json()
+        //}, (error: Response) => {
+        //    this.sMsg = error.text();
+        //});
+        //this.todaydate = this.myservice.showTodayDate(dataform);
+        this.myservice.registerUser(dataform)
+            .subscribe(
+            result => {
+                this.sMsg = result;
+            },
+            (error: Response) => {
+                this.sMsg = error.text();
+            }
+            );
     }
 }
