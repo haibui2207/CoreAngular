@@ -116,7 +116,7 @@ namespace CoreAngular.Controllers
                     var user = await _userManager.FindByEmailAsync(model.Email);
                     if (user == null )
                     {
-                        return BadRequest();
+                        return BadRequest("Email doesn't exist.Please try again");
                     }
 
                     var code = await _userManager.GeneratePasswordResetTokenAsync(user);
@@ -124,11 +124,11 @@ namespace CoreAngular.Controllers
                     return Ok(code);
                 }
 
-                return BadRequest();
+                return BadRequest("Model invalid. Please try again");
             }
             catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest("Model invalid. Please try again");
             }
         }
 
@@ -141,12 +141,12 @@ namespace CoreAngular.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return BadRequest();
+                    return BadRequest("Model invalid. Please try again");
                 }
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user == null)
                 {
-                    return BadRequest();
+                    return BadRequest("Email doesn't exist.Please try again");
                 }
                 var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
                 if (result.Succeeded)
@@ -154,11 +154,11 @@ namespace CoreAngular.Controllers
                     return Ok("Reset password successed.");
                 }
 
-                return BadRequest();
+                return BadRequest("Model invalid. Please try again");
             }
             catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest("Model invalid. Please try again");
             }
         }
 

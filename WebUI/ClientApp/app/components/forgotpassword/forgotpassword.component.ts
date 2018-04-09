@@ -9,7 +9,8 @@ import { ResetPasswordViewModel } from '../../models/resetpasswordviewmodel';
     styleUrls: ['./forgotpassword.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
-    infomation:string;
+    information: string;
+    setEmailReadonly: boolean = false;
     forgotPasswordModel: ForgotPasswordViewModel = new ForgotPasswordViewModel();
     resetPasswordModel: ResetPasswordViewModel = new ResetPasswordViewModel();
 
@@ -21,24 +22,22 @@ export class ForgotPasswordComponent implements OnInit {
         if (this.resetPasswordModel.code == null) {
             this.dataService.validateEmail(this.forgotPasswordModel.email)
                 .subscribe(
-                    res => {
-                        this.resetPasswordModel.email = this.forgotPasswordModel.email;
-                        this.resetPasswordModel.code = res;
-                        this.infomation = "";
-                    },
-                    err => {
-                        this.infomation = "Error try again"
-                    }
-                );
+                res => {
+                    this.resetPasswordModel.email = this.forgotPasswordModel.email;
+                    this.resetPasswordModel.code = res;
+                    this.setEmailReadonly = true;
+                    this.information = "";
+
+                },
+                err => {
+                    console.log(`err : ${JSON.stringify(err)}`);
+                    this.information = err.text();
+                });
         }
         else {
             this.dataService.requestResetPassword(this.resetPasswordModel).subscribe(
-                res => {
-                    this.infomation = res;
-                },
-                err => {
-                    this.infomation = "Error try again"
-                }
+                res => this.information = res,
+                err => this.information = err
             );
         }
     }

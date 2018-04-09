@@ -21,11 +21,16 @@ export class DataserviceService {
         let body = JSON.stringify({ email : email });
         let options = { headers: new Headers({ 'Content-Type': 'application/json' }) };
 
-        return this.http.post(this.URL1, body, options)
-            .map((response: Response) => {
-                console.log(`FORGOTPASSWORD RESPONSE : ${JSON.stringify(response.json().toString())} `);
-                return response.json().toString();
-            });
+        return this.http.post(this.URL1, body, options)            
+            .map(
+                (response: Response) => {
+                    console.log(`FORGOTPASSWORD RESPONSE : ${JSON.stringify(response.json().toString())}`);
+                    return response.json().toString();                
+                },
+                (error: Response) => {
+                    //console.log(`FORGOTPASSWORD RESPONSE ERROR: ${JSON.stringify(error.text())} `);
+                    return error.text();
+            });            
     }
 
     requestResetPassword(model: ResetPasswordViewModel): Observable<string> {
@@ -38,10 +43,16 @@ export class DataserviceService {
         let options = { headers: new Headers({ 'Content-Type': 'application/json' }) };
 
         return this.http.post(this.URL2, body, options)
-            .map((response: Response) => {
-                console.log(`RESETPASSWORD RESPONSE : ${JSON.stringify(response.json().toString())} `);
-                return response.json().toString();
-            });
+            .map(
+                (response: Response) => {
+                    console.log(`RESETPASSWORD RESPONSE : ${JSON.stringify(response.json().toString())} `);
+                    return response.json().toString();
+                },
+                (error: Response) => {
+                    //console.log(`RESETPASSWORD RESPONSE ERROR: ${JSON.stringify(error.json().toString())} `);
+                    return error.text();
+                }
+            );;
     }
 }
 
