@@ -41,6 +41,7 @@ namespace CoreAngular.Controllers
         {
            
             var id = _userManager.GetUserId(User); // Get user id:
+            //var a = User.Identity;
             var claim = User.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress").Value;
             var user = await _userManager.FindByEmailAsync(claim);
             //var user = await _userManager.GetUserAsync();

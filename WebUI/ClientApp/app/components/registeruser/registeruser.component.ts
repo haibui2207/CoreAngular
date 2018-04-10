@@ -19,14 +19,29 @@ export class RegisterUserComponent {
         //    this.sMsg = error.text();
         //});
         //this.todaydate = this.myservice.showTodayDate(dataform);
-        this.myservice.registerUser(dataform)
-            .subscribe(
-            result => {
-                this.sMsg = result;
-            },
-            (error: Response) => {
-                this.sMsg = error.text();
-            }
-            );
+        if (this.checkToken()) {
+            this.myservice.registerUser(dataform)
+                .subscribe(
+                result => {
+                    this.sMsg = result;
+                },
+                (error: Response) => {
+                    this.sMsg = error.text();
+                }
+                );
+        }
+        else {
+            this.sMsg = "user logged in";
+        }
+    }
+    checkToken() {
+        var currentUser = localStorage.getItem("currentUser");
+        if (currentUser == null) {
+            return true;
+        }
+        else {
+            false;
+        }
+            
     }
 }

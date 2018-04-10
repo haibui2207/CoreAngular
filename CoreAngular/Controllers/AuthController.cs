@@ -172,6 +172,7 @@ namespace CoreAngular.Controllers
                 {
                     return BadRequest(ModelState);
                 }
+                
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
 
