@@ -24,6 +24,19 @@ namespace CoreAngular
             Configuration = configuration;
         }
 
+        //Add Email Services
+        public Startup(IHostingEnvironment env)
+        {
+            var builder = new ConfigurationBuilder();
+
+            if (env.IsDevelopment())
+            {
+                builder.AddUserSecrets<Startup>();
+            }
+
+            Configuration = builder.Build();
+        }
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -32,9 +45,9 @@ namespace CoreAngular
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+            //services.AddIdentity<ApplicationUser, IdentityRole>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>()
+            //    .AddDefaultTokenProviders();
             //add cors
             services.AddCors(options =>
             {
@@ -44,6 +57,15 @@ namespace CoreAngular
                         .AllowAnyHeader()
                         .AllowCredentials());
             });
+
+            //Add email services
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+            {
+                config.SignIn.RequireConfirmedEmail = true;
+            })
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
 
             //added
             services.AddAuthentication(options =>
@@ -66,6 +88,9 @@ namespace CoreAngular
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+
+            // Add email services
+            services.Configure<AuthMessageSenderOptions>(Configuration);
 
             services.AddMvc();
         }

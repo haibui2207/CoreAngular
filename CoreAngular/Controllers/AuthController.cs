@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +8,8 @@ using CoreAngular.Models.AccountViewModels;
 using CoreAngular.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -118,10 +114,13 @@ namespace CoreAngular.Controllers
                     {
                         return BadRequest("Email doesn't exist.Please try again");
                     }
-
+                    //Send link to email
                     var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
+                    await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+                       $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
 
-                    return Ok(code);
+                    return Ok("Please check your email to reset your password.");
                 }
 
                 return BadRequest("Model invalid. Please try again");

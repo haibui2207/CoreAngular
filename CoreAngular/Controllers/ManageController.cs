@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using CoreAngular.Models;
+using CoreAngular.Models.ManageViewModels;
+using CoreAngular.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using CoreAngular.Models;
-using CoreAngular.Models.ManageViewModels;
-using CoreAngular.Services;
 
 namespace CoreAngular.Controllers
 {
