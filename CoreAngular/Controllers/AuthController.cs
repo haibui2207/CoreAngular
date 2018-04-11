@@ -115,9 +115,9 @@ namespace CoreAngular.Controllers
                         return BadRequest("Email doesn't exist.Please try again");
                     }
                     //Send link to email
-                    //var callbackUrl = new Uri("http://localhost:53893/reset-password/" + user.Id);
-                    //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                    //   $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+                    var callbackUrl = new Uri("http://localhost:52979/reset-password/" + user.Id);
+                    await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+                       $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
 
                     return Ok("Please check your email to reset your password.");
                 }
