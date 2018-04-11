@@ -19,6 +19,7 @@ import { RegisterService } from './services/register.service';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ListAgentComponent } from './components/list-agent/list-agent.component';
+import { confirmEmailComponent } from './components/confirmemail/confirmemail.component';
 
 import { AuthService } from '../app/services/auth.sevice';
 import { UserService } from '../app/services/user.service';
@@ -37,7 +38,8 @@ import { UserProfile } from './models/userProfile';
         RegisterUserComponent,
         LoginFormComponent,
         UserProfileComponent,
-        ListAgentComponent
+        ListAgentComponent,
+        confirmEmailComponent
     ],
     imports: [
         CommonModule,
@@ -53,6 +55,7 @@ import { UserProfile } from './models/userProfile';
             { path: 'login-form', component: LoginFormComponent },
             { path: 'user-profile', component: UserProfileComponent },
             { path: 'list-agent', component: ListAgentComponent },
+            { path: 'confirmEmail', component: confirmEmailComponent },
             { path: '**', redirectTo: 'home' }
            
         ])

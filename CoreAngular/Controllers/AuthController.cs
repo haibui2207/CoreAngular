@@ -180,7 +180,16 @@ namespace CoreAngular.Controllers
                 {
                     var roleresult = await _userManager.AddToRoleAsync(user, "Agent");
 
-                    return Ok("User created a new account with password.");
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //var callbackUrl = "http://localhost:53750/confirmEmail?id="+ user.Id+"&code="+code;
+                    
+                    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+                    string [] s = callbackUrl.Split('=');
+                    var mycode = s[2];
+                    var mycallbackUrl = "http://localhost:53750/confirmEmail?id=" + user.Id + "&code=" + mycode;
+                    await _emailSender.SendEmailConfirmationAsync(model.Email, mycallbackUrl);
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return Ok("please, confirm your email");
                 }
                 else
                 {
@@ -200,6 +209,36 @@ namespace CoreAngular.Controllers
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError(string.Empty, error.Description);
+            }
+        }
+        [HttpPost]
+        [Route("confirmEmail")]
+        public async Task<IActionResult> confirmEmail([FromBody] ConfirmEmailViewModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var user = await _userManager.FindByIdAsync(model.userid);
+                if (user == null)
+                {
+                    throw new ApplicationException($"Unable to load user with ID '{model.userid}'.");
+                }
+                var result = await _userManager.ConfirmEmailAsync(user, model.code);
+                if(result.Succeeded)
+                {
+                    return Ok("confirm email success");
+                }
+                else
+                {
+                    return BadRequest("confirm email error");
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
             }
         }
     }
