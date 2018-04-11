@@ -12,32 +12,23 @@
         <div class='clearfix'></div>
         <div class='navbar-collapse collapse'>
             <ul class='nav navbar-nav'>
-                <li [routerLinkActive]="['link-active']">
+                <li [routerLinkActive]="['link-active']" *ngIf="isLoggedIn$ | async">
                     <a [routerLink]="['/home']">
                         <span class='glyphicon glyphicon-home'></span> Home
                     </a>
                 </li>
-                <li [routerLinkActive]="['link-active']">
+                <li [routerLinkActive]="['link-active']" *ngIf="isLoggedIn$ | async">
                     <a [routerLink]="['/counter']">
                         <span class='glyphicon glyphicon-education'></span> Counter
                     </a>
                 </li>
-                <li [routerLinkActive]="['link-active']">
+                <li [routerLinkActive]="['link-active']" *ngIf="isLoggedIn$ | async">
                     <a [routerLink]="['/fetch-data']">
                         <span class='glyphicon glyphicon-th-list'></span> Fetch data
                     </a>
                 </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/forgot-password']">
-                        <span class='glyphicon glyphicon-th-list'></span> Forgot Password
-                    </a>
-                </li>
-                <li [routerLinkActive]="['link-active']" *ngIf="!isLoggedIn">
-                    <a [routerLink]="['/register-user']">
-                        <span class='glyphicon glyphicon-th-list'></span> Register User
-                    </a>
-                </li>
-                <li [routerLinkActive]="['link-active']" *ngIf="!isLoggedIn">
+                
+                <li [routerLinkActive]="['link-active']" *ngIf="!(isLoggedIn$ | async)">
                     <a [routerLink]="['/login-form']">
                         <span class='glyphicon glyphicon-th-list'></span> Login
                     </a>
@@ -47,7 +38,7 @@
                         <span class='glyphicon glyphicon-th-list'></span> User Proflie
                     </a>
                 </li>
-                <li [routerLinkActive]="['link-active']" *ngIf="isLoggedIn$ | async">
+                <li [routerLinkActive]="['link-active']" *ngIf="((isLoggedIn$ | async) && (!isRoleAdmin$ | async))">
                     <a [routerLink]="['/list-agent']">
                         <span class='glyphicon glyphicon-th-list'></span> List Agent
                     </a>

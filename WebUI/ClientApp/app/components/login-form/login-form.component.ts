@@ -24,11 +24,13 @@ export class LoginFormComponent implements OnInit {
     ngOnInit() {
   }
     login() {
+       
         this.loading = true;
         console.log(this.model.email);
         this.authService.login(this.model.email, this.model.password)
             .subscribe(result => {
                 if (result === true) {
+                    this.authService.setUserLoggedIn(true);
                     this.router.navigate(['/']);
                 } else {
                     this.error = 'Username or password is incorrect';

@@ -12,13 +12,29 @@ import { from } from 'rxjs/observable/from';
 export class AuthService {
     public token: string;
 
+    private isUserLoggedIn: boolean;
+
+
     private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    private rolesAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
     constructor(private http: Http) {
-        this.loggedIn.next(false);
+        this.isUserLoggedIn = false;
+    }
+
+    setUserLoggedIn(check: boolean) {
+        this.isUserLoggedIn = check;
+    }
+
+    getUserLoggedIn() {
+        return this.isUserLoggedIn;
     }
 
     get isLoggedIn() {
         return this.loggedIn.asObservable();
+    }
+    get isRoleAdmin() {
+        return this.rolesAdmin.asObservable();
     }
 
 
@@ -32,6 +48,9 @@ export class AuthService {
             .map((response: Response) => {
 
                 let token = response.json().token;
+                let roles = response.json().roles;
+                if (roles == "Admin")
+                    this.rolesAdmin.next(true);
                 if (token) {
                     this.token = token;
                     localStorage.setItem('currentUser', token);

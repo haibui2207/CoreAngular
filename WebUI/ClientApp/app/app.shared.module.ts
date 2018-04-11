@@ -15,6 +15,7 @@ import { RegisterUserComponent } from './components/registeruser/registeruser.co
 
 import { DataserviceService } from './services/dataservice.service';
 import { RegisterService } from './services/register.service';
+import { AuthguardGuard } from './services/authguard.guard';
 
 
 import { LoginFormComponent } from './components/login-form/login-form.component';
@@ -49,17 +50,17 @@ import { UserProfile } from './models/userProfile';
         FormsModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
+            { path: 'home', component: HomeComponent, canActivate: [AuthguardGuard] },
+            { path: 'counter', component: CounterComponent, canActivate: [AuthguardGuard] },
+            { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthguardGuard] },
             { path: 'forgot-password', component: ForgotPasswordComponent },
             { path: 'reset-password/:userid', component: ResetPasswordComponent },
             { path: 'register-user', component: RegisterUserComponent },
             { path: 'login-form', component: LoginFormComponent },
-            { path: 'user-profile', component: UserProfileComponent },
-            { path: 'list-agent', component: ListAgentComponent },
+            { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthguardGuard] },
+            { path: 'list-agent', component: ListAgentComponent, canActivate: [AuthguardGuard]},
             { path: 'confirmEmail', component: confirmEmailComponent },
-            { path: '**', redirectTo: 'home' }
+            { path: '**', redirectTo: 'home', canActivate: [AuthguardGuard] }
            
         ])
     ],
@@ -67,7 +68,9 @@ import { UserProfile } from './models/userProfile';
         DataserviceService,
         RegisterService,
         AuthService,
-        UserService],
+        UserService,
+        AuthguardGuard
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModuleShared {

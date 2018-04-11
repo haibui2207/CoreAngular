@@ -25,6 +25,24 @@ export class UserService {
             .map((response: Response) => response.json());
     }
 
+    editProfile(userName: string, fileUpload: File): Observable<boolean> {
+
+        let ahihi = localStorage.getItem('currentUser');
+
+        const headers = new Headers();
+        headers.append('Accept', 'multipart/form-data');
+        headers.append('Authorization', 'Bearer ' + ahihi);
+        const options = new RequestOptions({ headers: headers });
+
+        let formData = new FormData();
+        formData.append('file', fileUpload, fileUpload.name);
+        formData.append('userName', userName);
+        return this.http.post('https://localhost:44342/api/Agent/editprofile', formData, options)
+            .map((response: Response) => {
+                return true;
+            });
+    }
+
     getProfiles(): Observable<UserProfile[]> {
 
         let ahihi = localStorage.getItem('currentUser');
