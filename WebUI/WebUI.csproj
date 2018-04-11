@@ -21,10 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\components\resetpassword\resetpassword.component.ts" />
     <None Remove="ClientApp\app\services\register.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\components\resetpassword\resetpassword.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\register.service.ts" />
   </ItemGroup>
 

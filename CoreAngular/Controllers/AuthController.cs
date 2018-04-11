@@ -115,10 +115,9 @@ namespace CoreAngular.Controllers
                         return BadRequest("Email doesn't exist.Please try again");
                     }
                     //Send link to email
-                    var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                    var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
-                    await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                       $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+                    //var callbackUrl = new Uri("http://localhost:53893/reset-password/" + user.Id);
+                    //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+                    //   $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
 
                     return Ok("Please check your email to reset your password.");
                 }
@@ -128,6 +127,29 @@ namespace CoreAngular.Controllers
             catch (Exception e)
             {
                 return BadRequest("Model invalid. Please try again");
+            }
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Consumes("application/json", "application/json-patch+json", "multipart/form-data")]
+        [Route("GetCodeResetPassword")]
+        public async Task<IActionResult> GetCodeResetPassword([FromBody] string userid)
+        {
+            try
+            {
+                var user = await _userManager.FindByIdAsync(userid);
+                if (user == null)
+                {
+                    return BadRequest("User doesn't exist!");
+                }
+                var requestCode = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                return Ok(new { email = user.Email , code = requestCode });
+            }
+            catch (Exception e)
+            {
+                return BadRequest("User doesn't exist!");
             }
         }
 

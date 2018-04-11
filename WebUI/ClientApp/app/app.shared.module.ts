@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { ForgotPasswordComponent } from './components/forgotpassword/forgotpassword.component';
+import { ResetPasswordComponent } from './components/resetpassword/resetpassword.component';
 import { RegisterUserComponent } from './components/registeruser/registeruser.component';
 
 import { DataserviceService } from './services/dataservice.service';
@@ -34,6 +35,7 @@ import { UserProfile } from './models/userProfile';
         FetchDataComponent,
         HomeComponent,
         ForgotPasswordComponent,
+        ResetPasswordComponent,
         RegisterUserComponent,
         LoginFormComponent,
         UserProfileComponent,
@@ -49,6 +51,7 @@ import { UserProfile } from './models/userProfile';
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'forgot-password', component: ForgotPasswordComponent },
+            { path: 'reset-password/:userid', component: ResetPasswordComponent },
             { path: 'register-user', component: RegisterUserComponent },
             { path: 'login-form', component: LoginFormComponent },
             { path: 'user-profile', component: UserProfileComponent },

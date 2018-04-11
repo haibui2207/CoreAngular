@@ -13163,11 +13163,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\DELL\\Desktop\\MergeCode\\CoreAngular\\CoreAngular.csproj",
+      "projectUniqueName": "C:\\Users\\DELL\\Desktop\\mergecode\\CoreAngular\\CoreAngular.csproj",
       "projectName": "CoreAngular",
-      "projectPath": "C:\\Users\\DELL\\Desktop\\MergeCode\\CoreAngular\\CoreAngular.csproj",
+      "projectPath": "C:\\Users\\DELL\\Desktop\\mergecode\\CoreAngular\\CoreAngular.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DELL\\Desktop\\MergeCode\\CoreAngular\\obj\\",
+      "outputPath": "C:\\Users\\DELL\\Desktop\\mergecode\\CoreAngular\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

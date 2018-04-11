@@ -12,7 +12,8 @@ import 'rxjs/add/operator/catch';
 export class DataserviceService {
    
     private URL1 = 'https://localhost:44342/api/auth/forgotpassword';
-    private URL2 = 'https://localhost:44342/api/auth/resetpassword';
+    private URL2 = 'https://localhost:44342/api/auth/getcoderesetpassword';
+    private URL3 = 'https://localhost:44342/api/auth/resetpassword';
 
     constructor(private http: Http) { }
 
@@ -28,9 +29,26 @@ export class DataserviceService {
                     return response.json().toString();                
                 },
                 (error: Response) => {
-                    //console.log(`FORGOTPASSWORD RESPONSE ERROR: ${JSON.stringify(error.text())} `);
                     return error.text();
             });            
+    }
+
+    requestCodeResetPassword(userid: string): Observable<ResetPasswordViewModel> {
+        let body = JSON.stringify(userid);
+        console.log(`body: ${body} `);
+        let options = { headers: new Headers({ 'Content-Type': 'application/json' }) };
+        let model = new ResetPasswordViewModel();
+
+        return this.http.post(this.URL2, body, options)
+            .map(
+            (response: Response) => {
+                model.code = response.json().code;
+                model.email = response.json().email;
+                return model;
+            },
+            (error: Response) => {               
+                return error.text();
+            });   
     }
 
     requestResetPassword(model: ResetPasswordViewModel): Observable<string> {
@@ -42,7 +60,7 @@ export class DataserviceService {
         });
         let options = { headers: new Headers({ 'Content-Type': 'application/json' }) };
 
-        return this.http.post(this.URL2, body, options)
+        return this.http.post(this.URL3, body, options)
             .map(
                 (response: Response) => {
                     console.log(`RESETPASSWORD RESPONSE : ${JSON.stringify(response.json().toString())} `);
@@ -52,7 +70,7 @@ export class DataserviceService {
                     //console.log(`RESETPASSWORD RESPONSE ERROR: ${JSON.stringify(error.json().toString())} `);
                     return error.text();
                 }
-            );;
+            );
     }
 }
 
