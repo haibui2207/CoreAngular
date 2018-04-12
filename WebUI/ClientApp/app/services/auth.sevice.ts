@@ -10,9 +10,10 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 import { from } from 'rxjs/observable/from';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { findLast } from '@angular/compiler/src/directive_resolver';
 
 @Injectable()
-export class AuthService implements OnInit{
+export class AuthService {
     public token: string;
 
     public isUserLoggedIn: boolean;
@@ -23,21 +24,9 @@ export class AuthService implements OnInit{
     public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     public rolesAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-<<<<<<< HEAD
-    constructor(private http: Http) {
-       
-        //this.isUserLoggedIn = (localStorage.getItem('currentUser')) ? true : false;
-    }
-    ngOnInit() {
-        if (localStorage.getItem('currentUser')) {
-            this.isUserLoggedIn = true;
-        }
-        console.log("12356745678645345678");
-=======
     constructor(private http: Http, @Inject(PLATFORM_ID) private platformId: Object) {
         this.isUserLoggedIn = false;
         this.isBrowser = isPlatformBrowser(platformId);
->>>>>>> 3d8d38dc3d24bc1741eeb93debac33ada635795c
     }
 
     redirectUrl: string;
@@ -55,9 +44,6 @@ export class AuthService implements OnInit{
         return this.isUserLoggedIn;
     }
 
-<<<<<<< HEAD
-   
-=======
     //TEST
     getCurrentUser() {
         if (this.isBrowser) {
@@ -65,11 +51,22 @@ export class AuthService implements OnInit{
                 return false;
             }
             return true;
-        }         
+        }
         return false;
-    }
->>>>>>> 3d8d38dc3d24bc1741eeb93debac33ada635795c
 
+    }
+
+    //TEST
+    getCurrentRole() {
+        if (this.isBrowser) {
+            if (window.localStorage.getItem('role') == "Admin") {
+                return true;
+            }
+            return false;
+        }
+        return false;
+
+    }
 
 
     get isLoggedIn() {

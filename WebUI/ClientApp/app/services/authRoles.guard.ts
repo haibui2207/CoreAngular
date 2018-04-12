@@ -14,22 +14,15 @@ export class AuthrolesGuard implements CanActivate {
   
     }
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-
-        let currentUser = this.auth.getCurrentUser();
-        let userLoggedIn = this.auth.getUserLoggedIn();
-        console.log(`Current User: ${currentUser}`);
-        console.log(`userLoggedIn : ${userLoggedIn}`);
-        
-        if (!currentUser) {
-            this.router.navigate(['/login-form']);
-            return false;
+        let a = this.auth.getCurrentRole();
+        if (a) {
+            return true;
         }
         else {
-            this.auth.loggedIn.next(true);
-            if (window.localStorage.getItem('role') == "Admin")
-                this.auth.rolesAdmin.next(true);
-            return true;
-        };
+            this.router.navigate(['/home']);
+            return false;
+        }
+
     }
    
 }

@@ -16,6 +16,7 @@ import { RegisterUserComponent } from './components/registeruser/registeruser.co
 import { DataserviceService } from './services/dataservice.service';
 import { RegisterService } from './services/register.service';
 import { AuthguardGuard } from './services/authguard.guard';
+import { AuthrolesGuard } from './services/authRoles.guard';
 import { LocalStorageModule, ILocalStorageServiceConfig } from 'angular-2-local-storage';
 import { LocalStorageService } from 'angular-2-local-storage';
 
@@ -64,7 +65,7 @@ let localStorageServiceConfig = {
             { path: 'register-user', component: RegisterUserComponent },
             { path: 'login-form', component: LoginFormComponent },
             { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthguardGuard] },
-            { path: 'list-agent', component: ListAgentComponent, canActivate: [AuthguardGuard]},
+            { path: 'list-agent', component: ListAgentComponent, canActivate: [AuthguardGuard, AuthrolesGuard]},
             { path: 'confirmEmail', component: confirmEmailComponent },
             { path: '**', redirectTo: 'home'}
            
@@ -77,6 +78,7 @@ let localStorageServiceConfig = {
         UserService,
         AuthguardGuard,
         LocalStorageService,
+        AuthrolesGuard
         
        
     ],
