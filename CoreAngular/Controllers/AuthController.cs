@@ -212,7 +212,7 @@ namespace CoreAngular.Controllers
                     var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
                     string [] s = callbackUrl.Split('=');
                     var mycode = s[2];
-                    var mycallbackUrl = "http://localhost:53750/confirmEmail?id=" + user.Id + "&code=" + mycode;
+                    var mycallbackUrl = "http://localhost:52979/confirmEmail?id=" + user.Id + "&code=" + mycode;
                     await _emailSender.SendEmailConfirmationAsync(model.Email, mycallbackUrl);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return Ok("please, confirm your email");

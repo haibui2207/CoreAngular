@@ -17,4 +17,14 @@ export class RegisterService {
                 return error.text();
             });
     }
+    checkToken() {
+        var currentUser = localStorage.getItem("currentUser");
+        if (currentUser == null) {
+            return true;
+        }
+        else {
+            false;
+        }
+
+    }
 }
