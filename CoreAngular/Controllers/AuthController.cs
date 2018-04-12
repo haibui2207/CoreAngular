@@ -63,7 +63,7 @@ namespace CoreAngular.Controllers
                     var roles = await _userManager.GetRolesAsync(user);
 
                     var tokenString = BuildToken(model, roles[0]);
-                    return Ok(new { token = tokenString });
+                    return Ok(new { token = tokenString,  roles = roles });
                 }
                 else
                 {

@@ -29,6 +29,7 @@ export class NavMenuComponent implements OnInit{
     onLogout() {
         this.authService.logout();
         this.authService.setUserLoggedIn(false);
+        this.authService.setRoles(false);
         this.router.navigate(['/login-form']);
     }
 }

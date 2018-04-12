@@ -22,7 +22,16 @@ export class LoginFormComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-  }
+        this.checkChoi();
+    }
+
+    checkChoi() {
+        if (localStorage.getItem('currentUser')) {
+           // this.authService.loggedIn.next(true);
+           // this.authService.isUserLoggedIn = true;
+           //this.router.navigate(['/home']);
+        }
+    }
     login() {
        
         this.loading = true;

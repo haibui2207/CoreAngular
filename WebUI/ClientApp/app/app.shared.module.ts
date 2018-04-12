@@ -16,6 +16,8 @@ import { RegisterUserComponent } from './components/registeruser/registeruser.co
 import { DataserviceService } from './services/dataservice.service';
 import { RegisterService } from './services/register.service';
 import { AuthguardGuard } from './services/authguard.guard';
+import { LocalStorageModule, ILocalStorageServiceConfig } from 'angular-2-local-storage';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 
 import { LoginFormComponent } from './components/login-form/login-form.component';
@@ -28,7 +30,10 @@ import { UserService } from '../app/services/user.service';
 import { UserProfile } from './models/userProfile';
 
 
-
+let localStorageServiceConfig = {
+    prefix: 'my-app',
+    storageType: 'sessionStorage'
+};
 @NgModule({
     declarations: [
         AppComponent,
@@ -47,6 +52,7 @@ import { UserProfile } from './models/userProfile';
     imports: [
         CommonModule,
         HttpModule,
+        LocalStorageModule,
         FormsModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -60,7 +66,7 @@ import { UserProfile } from './models/userProfile';
             { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthguardGuard] },
             { path: 'list-agent', component: ListAgentComponent, canActivate: [AuthguardGuard]},
             { path: 'confirmEmail', component: confirmEmailComponent },
-            { path: '**', redirectTo: 'home', canActivate: [AuthguardGuard] }
+            { path: '**', redirectTo: 'home'}
            
         ])
     ],
@@ -69,7 +75,10 @@ import { UserProfile } from './models/userProfile';
         RegisterService,
         AuthService,
         UserService,
-        AuthguardGuard
+        AuthguardGuard,
+        LocalStorageService,
+        
+       
     ],
     bootstrap: [AppComponent]
 })

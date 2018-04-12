@@ -12,23 +12,39 @@ import { from } from 'rxjs/observable/from';
 export class AuthService {
     public token: string;
 
-    private isUserLoggedIn: boolean;
+    public isUserLoggedIn: boolean;
 
 
-    private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-    private rolesAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    public rolesAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     constructor(private http: Http) {
         this.isUserLoggedIn = false;
+        this.isUserLoggedIn = (localStorage.getItem('currentUser')) ? true : false;
+       
     }
 
+    redirectUrl: string;
+
+
     setUserLoggedIn(check: boolean) {
+        this.isUserLoggedIn = check;
+    }
+
+    setRoles(check: boolean) {
         this.isUserLoggedIn = check;
     }
 
     getUserLoggedIn() {
         return this.isUserLoggedIn;
     }
+
+    getTest() {
+        if (!localStorage.getItem('currentUser')) {
+            return true;
+        }
+    }
+
 
     get isLoggedIn() {
         return this.loggedIn.asObservable();
@@ -37,6 +53,14 @@ export class AuthService {
         return this.rolesAdmin.asObservable();
     }
 
+    public isAuthenticated(): boolean {
+
+        const token = localStorage.getItem('currentUser');
+        if (token) {
+            return true
+        }
+        return false;
+    }
 
     login(email: string, password: string): Observable<boolean> {
 
@@ -49,10 +73,12 @@ export class AuthService {
 
                 let token = response.json().token;
                 let roles = response.json().roles;
+                console.log(roles);
                 if (roles == "Admin")
                     this.rolesAdmin.next(true);
                 if (token) {
                     this.token = token;
+                    this.isUserLoggedIn = true;
                     localStorage.setItem('currentUser', token);
                     this.loggedIn.next(true);
                     return true;
