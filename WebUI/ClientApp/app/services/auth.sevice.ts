@@ -1,6 +1,8 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 
 
@@ -13,15 +15,16 @@ export class AuthService {
     public token: string;
 
     public isUserLoggedIn: boolean;
+    //TEST
+    private isBrowser: boolean;
 
 
     public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     public rolesAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    constructor(private http: Http) {
+    constructor(private http: Http, @Inject(PLATFORM_ID) private platformId: Object) {
         this.isUserLoggedIn = false;
-        this.isUserLoggedIn = (localStorage.getItem('currentUser')) ? true : false;
-       
+        this.isBrowser = isPlatformBrowser(platformId);
     }
 
     redirectUrl: string;
@@ -39,11 +42,17 @@ export class AuthService {
         return this.isUserLoggedIn;
     }
 
-    getTest() {
-        if (!localStorage.getItem('currentUser')) {
+    //TEST
+    getCurrentUser() {
+        if (this.isBrowser) {
+            if (window.localStorage.getItem('currentUser') == null) {
+                return false;
+            }
             return true;
-        }
+        }         
+        return false;
     }
+
 
 
     get isLoggedIn() {
@@ -74,12 +83,14 @@ export class AuthService {
                 let token = response.json().token;
                 let roles = response.json().roles;
                 console.log(roles);
-                if (roles == "Admin")
+                if (roles == "Admin") {
+                    window.localStorage.setItem('role', roles);
                     this.rolesAdmin.next(true);
+                }
                 if (token) {
                     this.token = token;
                     this.isUserLoggedIn = true;
-                    localStorage.setItem('currentUser', token);
+                    window.localStorage.setItem('currentUser', token);
                     this.loggedIn.next(true);
                     return true;
                 } else {
@@ -94,6 +105,8 @@ export class AuthService {
         this.token = "";
         this.loggedIn.next(false);
         localStorage.removeItem('currentUser');
+        this.rolesAdmin.next(false);
+        localStorage.removeItem('role');
        
     }
 }

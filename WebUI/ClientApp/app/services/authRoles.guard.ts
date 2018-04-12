@@ -6,7 +6,7 @@ import { AuthService } from '../services/auth.sevice';
 import { isPlatformBrowser } from '@angular/common';
 
 @Injectable()
-export class AuthguardGuard implements CanActivate {
+export class AuthrolesGuard implements CanActivate {
 
     private token: string;
 
@@ -14,34 +14,6 @@ export class AuthguardGuard implements CanActivate {
   
     }
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        //if (this.localStorageService.get('currentUser')) {
-        //    return true;
-        //}
-        //localStorage.getItem('currentUser');
-        //if (this.auth.getTest()) {
-        //    return true;
-        //}
-        //let ahihi = localStorage.getItem('currentUser');
-      //  return this.auth.isAuthenticated();
-        // console.log(route);
-        //if (isPlatformBrowser(this.platformId))//<== means you are client side
-        //{
-        //    if (localStorage.getItem('currentUser')) {
-
-        //    }
-        //}
-        //this.router.navigate(['/logout'], { queryParams: { returnUrl: state.url } });
-        //return false;
-
-        //return this.auth.isLoggedIn       // {1}
-        //    .take(1)                               // {2} 
-        //    .map((isLoggedIn: boolean) => {        // {3}
-        //        if (!isLoggedIn) {
-        //            this.router.navigate(['/login']);  // {4}
-        //            return false;
-        //        }
-        //        return true;
-        //    });
 
         let currentUser = this.auth.getCurrentUser();
         let userLoggedIn = this.auth.getUserLoggedIn();
