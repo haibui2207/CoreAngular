@@ -115,18 +115,18 @@ namespace CoreAngular.Controllers
                         return BadRequest("Email doesn't exist.Please try again");
                     }
                     //Send link to email
-                    //var callbackUrl = new Uri("http://localhost:53893/reset-password/" + user.Id);
-                    //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                    //   $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+                    var callbackUrl = new Uri("http://localhost:52979/reset-password/" + user.Id);
+                    await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+                       $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
 
                     return Ok("Please check your email to reset your password.");
                 }
 
-                return BadRequest("Model invalid. Please try again");
+                return BadRequest("Wrong email syntax");
             }
             catch (Exception e)
             {
-                return BadRequest("Model invalid. Please try again");
+                return BadRequest("Server error . Please try again later");
             }
         }
 
@@ -149,7 +149,7 @@ namespace CoreAngular.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest("User doesn't exist!");
+                return BadRequest("Server error.Please try again later");
             }
         }
 
@@ -160,26 +160,30 @@ namespace CoreAngular.Controllers
         {
             try
             {
+                if (model.Password != model.ConfirmPassword)
+                {
+                    return BadRequest("The password and confirmation password do not match.");
+                }
                 if (!ModelState.IsValid)
                 {
-                    return BadRequest("Model invalid. Please try again");
-                }
+                    return BadRequest("password must contain at least 8 characters one digit , one uppercase letter and one special letter");
+                }                              
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user == null)
                 {
                     return BadRequest("Email doesn't exist.Please try again");
-                }
+                }                
                 var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
                 if (result.Succeeded)
                 {
                     return Ok("Reset password successed.");
                 }
 
-                return BadRequest("Model invalid. Please try again");
+                return BadRequest("password must contain at least 8 characters one digit , one uppercase letter and one special letter");
             }
             catch (Exception e)
             {
-                return BadRequest("Model invalid. Please try again");
+                return BadRequest("Server error.Please try again later");
             }
         }
 
