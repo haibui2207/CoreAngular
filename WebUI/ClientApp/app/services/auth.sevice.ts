@@ -7,9 +7,10 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 import { from } from 'rxjs/observable/from';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Injectable()
-export class AuthService {
+export class AuthService implements OnInit{
     public token: string;
 
     public isUserLoggedIn: boolean;
@@ -19,9 +20,14 @@ export class AuthService {
     public rolesAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     constructor(private http: Http) {
-        this.isUserLoggedIn = false;
-        this.isUserLoggedIn = (localStorage.getItem('currentUser')) ? true : false;
        
+        //this.isUserLoggedIn = (localStorage.getItem('currentUser')) ? true : false;
+    }
+    ngOnInit() {
+        if (localStorage.getItem('currentUser')) {
+            this.isUserLoggedIn = true;
+        }
+        console.log("12356745678645345678");
     }
 
     redirectUrl: string;
@@ -39,11 +45,7 @@ export class AuthService {
         return this.isUserLoggedIn;
     }
 
-    getTest() {
-        if (!localStorage.getItem('currentUser')) {
-            return true;
-        }
-    }
+   
 
 
     get isLoggedIn() {
@@ -93,6 +95,7 @@ export class AuthService {
     logout(): void {
         this.token = "";
         this.loggedIn.next(false);
+        console.log(this.loggedIn);
         localStorage.removeItem('currentUser');
        
     }

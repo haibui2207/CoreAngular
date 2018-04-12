@@ -4,19 +4,26 @@ import { Observable } from 'rxjs/Observable';
 import { PLATFORM_ID } from '@angular/core';
 import { AuthService } from '../services/auth.sevice';
 import { isPlatformBrowser } from '@angular/common';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Injectable()
 export class AuthguardGuard implements CanActivate {
 
     private token: string;
 
-    constructor(private auth: AuthService, private router: Router, @Inject(PLATFORM_ID) private platformId: Object) {
+
+    constructor( private router: Router) {
   
     }
-    canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        //if (this.localStorageService.get('currentUser')) {
-        //    return true;
-        //}
+    
+
+    canActivate() {
+        if (localStorage.getItem('currentUser')) {
+            // logged in so return true
+            return true;
+        }
+        this.router.navigate(['/login']);
+        return false;
         //localStorage.getItem('currentUser');
         //if (this.auth.getTest()) {
         //    return true;
@@ -47,17 +54,17 @@ export class AuthguardGuard implements CanActivate {
 
 
 
+        //console.log(this.auth.getUserLoggedIn());
 
+        //let a = this.auth.loggedIn.getValue();
+        //console.log(a);
 
-
-
-
-        if (!this.auth.getUserLoggedIn()) {
-            this.router.navigate(['/login-form']);
-            return false;
-        } else {
-            return true;
-        }
+        //if (!this.auth.isUserLoggedIn) {
+        //    this.router.navigate(['/login-form']);
+        //    return false;
+        //} else {
+        //    return true;
+        //}
     }
    
 }
