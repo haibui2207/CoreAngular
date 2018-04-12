@@ -1,8 +1,9 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { DataserviceService } from '../../services/dataservice.service';
 import { ResetPasswordViewModel } from '../../models/resetpasswordviewmodel';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { RegisterService } from '../../services/register.service';
 
 @Component({
     selector: 'resetpassword',
@@ -16,7 +17,9 @@ export class ResetPasswordComponent implements OnInit {
 
     constructor(private dataService: DataserviceService,
         private route: ActivatedRoute,
-        private location: Location) { }
+        private location: Location,
+        private router: Router,
+        private myservice: RegisterService) { }
 
     ngOnInit() {
         this.location.replaceState("reset-password");
@@ -37,17 +40,23 @@ export class ResetPasswordComponent implements OnInit {
     }
 
     requestResetEmail() {
-        this.dataService.requestResetPassword(this.resetPasswordModel)
-            .subscribe(
-            res => {
-                this.successMessage = res;
-            },
-            err => {
-                this.resetPasswordModel.password = "";
-                this.resetPasswordModel.confirmpassword ="";
-                console.log(`err : ${JSON.stringify(err)}`);
-                this.errorMessage = err.text();
-            });
+        if (this.myservice.checkToken()) {
+            this.dataService.requestResetPassword(this.resetPasswordModel)
+                .subscribe(
+                res => {
+                    this.successMessage = res;
+                },
+                err => {
+                    this.resetPasswordModel.password = "";
+                    this.resetPasswordModel.confirmpassword = "";
+                    console.log(`err : ${JSON.stringify(err)}`);
+                    this.errorMessage = err.text();
+                });
+        }
+        else {
+            this.router.navigate(['/home']);
+        }
+       
     }
 
 }
