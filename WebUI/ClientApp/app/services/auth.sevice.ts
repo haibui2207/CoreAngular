@@ -1,6 +1,8 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 
 
@@ -14,11 +16,14 @@ export class AuthService implements OnInit{
     public token: string;
 
     public isUserLoggedIn: boolean;
+    //TEST
+    private isBrowser: boolean;
 
 
     public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     public rolesAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
+<<<<<<< HEAD
     constructor(private http: Http) {
        
         //this.isUserLoggedIn = (localStorage.getItem('currentUser')) ? true : false;
@@ -28,6 +33,11 @@ export class AuthService implements OnInit{
             this.isUserLoggedIn = true;
         }
         console.log("12356745678645345678");
+=======
+    constructor(private http: Http, @Inject(PLATFORM_ID) private platformId: Object) {
+        this.isUserLoggedIn = false;
+        this.isBrowser = isPlatformBrowser(platformId);
+>>>>>>> 3d8d38dc3d24bc1741eeb93debac33ada635795c
     }
 
     redirectUrl: string;
@@ -45,7 +55,21 @@ export class AuthService implements OnInit{
         return this.isUserLoggedIn;
     }
 
+<<<<<<< HEAD
    
+=======
+    //TEST
+    getCurrentUser() {
+        if (this.isBrowser) {
+            if (window.localStorage.getItem('currentUser') == null) {
+                return false;
+            }
+            return true;
+        }         
+        return false;
+    }
+>>>>>>> 3d8d38dc3d24bc1741eeb93debac33ada635795c
+
 
 
     get isLoggedIn() {
@@ -76,12 +100,14 @@ export class AuthService implements OnInit{
                 let token = response.json().token;
                 let roles = response.json().roles;
                 console.log(roles);
-                if (roles == "Admin")
+                if (roles == "Admin") {
+                    window.localStorage.setItem('role', roles);
                     this.rolesAdmin.next(true);
+                }
                 if (token) {
                     this.token = token;
                     this.isUserLoggedIn = true;
-                    localStorage.setItem('currentUser', token);
+                    window.localStorage.setItem('currentUser', token);
                     this.loggedIn.next(true);
                     return true;
                 } else {
@@ -97,6 +123,8 @@ export class AuthService implements OnInit{
         this.loggedIn.next(false);
         console.log(this.loggedIn);
         localStorage.removeItem('currentUser');
+        this.rolesAdmin.next(false);
+        localStorage.removeItem('role');
        
     }
 }

@@ -50,6 +50,7 @@ export class AuthguardGuard implements CanActivate {
         //        return true;
         //    });
 
+<<<<<<< HEAD
 
 
 
@@ -65,6 +66,23 @@ export class AuthguardGuard implements CanActivate {
         //} else {
         //    return true;
         //}
+=======
+        let currentUser = this.auth.getCurrentUser();
+        let userLoggedIn = this.auth.getUserLoggedIn();
+        console.log(`Current User: ${currentUser}`);
+        console.log(`userLoggedIn : ${userLoggedIn}`);
+        
+        if (!currentUser) {
+            this.router.navigate(['/login-form']);
+            return false;
+        }
+        else {
+            this.auth.loggedIn.next(true);
+            if (window.localStorage.getItem('role') == "Admin")
+                this.auth.rolesAdmin.next(true);
+            return true;
+        };
+>>>>>>> 3d8d38dc3d24bc1741eeb93debac33ada635795c
     }
    
 }
