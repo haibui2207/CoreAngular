@@ -8,7 +8,14 @@ import {Router } from '@angular/router';
     templateUrl: './registeruser.component.html'
 })
 export class RegisterUserComponent {
-    sMsg: any;
+    sMsgsc: any;
+    sMsger: any;
+    sMsgJson: any;
+    email: any;
+    password: any;
+    confirmpassword: any;
+    sUserislog: string;
+    err: any;
     constructor(private http: Http,
         @Inject('BASE_URL') private baseUrl: string, private myservice: RegisterService, private router: Router) {
     }
@@ -23,15 +30,20 @@ export class RegisterUserComponent {
             this.myservice.registerUser(dataform)
                 .subscribe(
                 result => {
-                    this.sMsg = result;
+                    this.sMsgsc = result.toString();
                 },
                 (error: Response) => {
-                    this.sMsg = error.text();
+                    this.sMsger = error.text();
+                    this.sMsgJson = JSON.parse(this.sMsger);
+                    this.email = this.sMsgJson.Email;
+                    this.password = this.sMsgJson.Password;
+                    this.confirmpassword = this.sMsgJson.ConfirmPassword;
+                    this.err = this.sMsgJson.err;
                 }
                 );
         }
         else {
-            this.sMsg = "user logged in";
+            this.sUserislog = "user logged in";
             this.router.navigate(['/home']);
         }
     }

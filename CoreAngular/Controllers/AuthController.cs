@@ -215,7 +215,7 @@ namespace CoreAngular.Controllers
                     var mycallbackUrl = "http://localhost:52979/confirmEmail?id=" + user.Id + "&code=" + mycode;
                     await _emailSender.SendEmailConfirmationAsync(model.Email, mycallbackUrl);
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return Ok("please, confirm your email");
+                    return Ok("Please, confirm your email");
                 }
                 else
                 {
@@ -234,7 +234,7 @@ namespace CoreAngular.Controllers
         {
             foreach (var error in result.Errors)
             {
-                ModelState.AddModelError(string.Empty, error.Description);
+                ModelState.AddModelError("err", error.Description);
             }
         }
         [HttpPost]
@@ -255,7 +255,7 @@ namespace CoreAngular.Controllers
                 var result = await _userManager.ConfirmEmailAsync(user, model.code);
                 if(result.Succeeded)
                 {
-                    return Ok("confirm email success");
+                    return Ok("account registration success");
                 }
                 else
                 {

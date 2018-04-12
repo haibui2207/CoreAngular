@@ -13154,7 +13154,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DELL\\.nuget\\packages\\": {},
+    "C:\\Users\\ASUS\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13163,17 +13163,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\DELL\\Desktop\\mergecode\\CoreAngular\\CoreAngular.csproj",
+      "projectUniqueName": "D:\\MergeCode\\MergeCode\\CoreAngular\\CoreAngular.csproj",
       "projectName": "CoreAngular",
-      "projectPath": "C:\\Users\\DELL\\Desktop\\mergecode\\CoreAngular\\CoreAngular.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DELL\\Desktop\\mergecode\\CoreAngular\\obj\\",
+      "projectPath": "D:\\MergeCode\\MergeCode\\CoreAngular\\CoreAngular.csproj",
+      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+      "outputPath": "D:\\MergeCode\\MergeCode\\CoreAngular\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
