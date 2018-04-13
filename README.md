@@ -9,7 +9,7 @@ BODY: </br>
 &nbsp;&nbsp; "Password": "Abc@123" </br>
 } </br>
 
-# # ForgotPassword
+# # ForgotPassword And ResetPassword 
 ##GET LINK CALLBACK SEND TO EMAIL TO RESETPASSWOD 
 >URL : https://localhost:*****/api/auth/forgotpassword </br>
 Method : POST <br/>
@@ -31,4 +31,23 @@ BODY: </br>
 &nbsp;&nbsp; "Password": "Abc@123", </br>
 &nbsp;&nbsp; "ConfirmPassword" : "Abc@123", </br>
 &nbsp;&nbsp; "Code" : "code-here" </br>
+} </br>
+
+# #Register And ConfirmEmail
+##RegisterUser
+>URL : https://localhost:*****/api/registeruser </br>
+Method : POST </br>
+BODY: </br>
+{ </br>
+&nbsp;&nbsp; "Email": "abc@gmail.com", </br>
+&nbsp;&nbsp; "Password": "Abc@123" </br>
+&nbsp;&nbsp; "ConfirmPassword": "Abc@123" </br>
+} </br>
+##Confirm Email
+>URL : https://localhost:*****/api/confirmemail</br>
+Method : POST </br>
+BODY: </br>
+{ </br>
+&nbsp;&nbsp; "userid": "userid", </br>
+&nbsp;&nbsp; "code": "code" </br>
 } </br>
