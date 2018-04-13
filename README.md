@@ -53,13 +53,9 @@ BODY: </br>
 } </br>
 
 # #UserProfile
-
 ##GET USERPROFILE
-
 >URL : https://localhost:*****/api/agent/getprofile</br>
-
 Method : GET </br>
-
 HEADER: </br>
 { </br>
 &nbsp;&nbsp; "Authorization": "Bearer + TOKEN" </br>
@@ -67,7 +63,6 @@ HEADER: </br>
 
 ##GET LISTUSER
 >URL : https://localhost:*****/api/agent/getagentlist </br>
-
 HEADER: </br>
 { </br>
 &nbsp;&nbsp; "Authorization": "Bearer + TOKEN" </br>
@@ -75,15 +70,12 @@ HEADER: </br>
 
 ##POST AVATAR
 >URL : https://localhost:*****/api/agent/editprofile </br>
-
 Method : POST </br>
-
 HEADER: </br>
 { </br>
 &nbsp;&nbsp; "Authorization": "Bearer + TOKEN", </br>
 &nbsp;&nbsp; "Content-Type":"multipart/form-data" </br>
 } </br>
-
 BODY: </br> 
 { </br>
 &nbsp;&nbsp;&nbsp;"key":"file", </br> 
