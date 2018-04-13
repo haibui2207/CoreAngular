@@ -86,8 +86,8 @@ HEADER: </br>
 
 BODY: </br> 
 { </br>
-&nbsp;&nbsp;&nbsp;"key":"file",
-&nbsp;&nbsp;&nbsp;&nbsp;"value":"image/*",
-&nbsp;&nbsp;&nbsp;&nbsp;"type":image
+&nbsp;&nbsp;&nbsp;"key":"file", </br> 
+&nbsp;&nbsp;&nbsp;&nbsp;"value":"image/*",</br> 
+&nbsp;&nbsp;&nbsp;&nbsp;"type":image </br> 
 } </br>
 
