@@ -1,7 +1,7 @@
 
 # #Authentication
 ##GET TOKEN
->URL : https://localhost:*****/api/auth </br>
+>URL : https://localhost:*****/api/auth/login </br>
 Method : POST </br>
 BODY: </br>
 { </br>
@@ -51,3 +51,43 @@ BODY: </br>
 &nbsp;&nbsp; "userid": "userid", </br>
 &nbsp;&nbsp; "code": "code" </br>
 } </br>
+
+# #UserProfile
+
+##GET USERPROFILE
+
+>URL : https://localhost:*****/api/agent/getprofile</br>
+
+Method : GET </br>
+
+HEADER: </br>
+{ </br>
+&nbsp;&nbsp; "Authorization": "Bearer + TOKEN" </br>
+} </br>
+
+##GET LISTUSER
+>URL : https://localhost:*****/api/agent/getagentlist </br>
+
+HEADER: </br>
+{ </br>
+&nbsp;&nbsp; "Authorization": "Bearer + TOKEN" </br>
+} </br>
+
+##POST AVATAR
+>URL : https://localhost:*****/api/agent/editprofile </br>
+
+Method : POST </br>
+
+HEADER: </br>
+{ </br>
+&nbsp;&nbsp; "Authorization": "Bearer + TOKEN", </br>
+&nbsp;&nbsp; "Content-Type":"multipart/form-data" </br>
+} </br>
+
+BODY: </br> 
+{ </br>
+&nbsp;&nbsp;&nbsp;"key":"file",
+&nbsp;&nbsp;&nbsp;&nbsp;"value":"image/*",
+&nbsp;&nbsp;&nbsp;&nbsp;"type":image
+} </br>
+
